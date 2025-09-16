@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #f8f9fa;
+    font-family: 'Inter', sans-serif;
+}
+
+.contasLista{
+    width: 100%;
+    padding: 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: #758cfd1b;
+}
+
+.contaBox{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 300px;
+    height: 300px;
+    transition: 1s all;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.277);
+}
+.contaBox:nth-child(odd){
+    background-color: #571f4e;
+    color: #f8f9fa;
+}
+.contaBox:nth-child(even){
+    color: #f8f9fa;
+    background-color: #5d5179;
+}
+.contaBox:hover{
+        box-shadow: 1px 5px 17px #1c0a19;
+
+    z-index: 10;
+    transition: .1s all;
+    
+}
+
+.divContaHeader, .contaInfos, .contaValores {
+    height: 33%;
+}
+.contaInfos, .contaValores{
+    display: flex;
+    align-items: center;
+}
+.divContaHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+.divContaHeader>div>span{
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.divContaHeader>div>p{
+    font-size: 2.5rem;
+}
+
+input[type="checkbox"] {
+  appearance: none;       /* remove estilo padrão */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  border: 2px solid #f3f0f0;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.2s;
+}
+
+/* Estilo quando marcado */
+input[type="checkbox"]:checked {
+  background-color: #ffffffb5;
+  border-color: #ffffff;
+}
+
+/* Criar um "check" com pseudo-elemento */
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: #00072d;
+  font-size: 20px;
+  position: absolute;
+  left: 4px;
+  top: -1px;
+}
+
+.contaBox h2{
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}
+
+.contaBox > .valorConta{
+    font-size: .8rem;
+
+}
