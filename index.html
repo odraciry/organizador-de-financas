@@ -10,111 +10,164 @@
 </head>
 
 <body>
-    <div class="contasLista">
-
-        <div class="contaBox">
-            <div class="divContaHeader">
-                <div>
-                    <!-- data de vencimento -->
-                    <span>setembro</span>
-                    <p>15</p>
+    <!-- MODAL DE CRIAÇÃO DE CARD -->
+    <div class="modalCriacao" id="modalCriacao">
+        <div class="boxCriacao">
+            <div class="divCloseModal"><button id="closeModal">X</button></div>
+            <div class="cardInfos">
+                <h2>Crie seu novo card</h2>
+                <div class="cardComponents">
+                    <label for="date">Título</label>
+                    <input type="text" name="title" id="titleCard">
                 </div>
-                <input type="checkbox">
-            </div>
-            <div class="contaInfos">
-                <h2>amendoim com nutella até que é bom</h2>
-            </div>
-            <div class="contaValores">
-                <p class="valorConta">R$ 55,00</p>
+                <div class="cardComponents">
+                    <label for="date">Data</label>
+                    <input type="date" name="date" id="date">
+                </div>
+                <div class="cardComponents">
+                    <label for="date">Valor</label>
+                    <input type="number" name="date" id="date">
+                </div>
+
             </div>
         </div>
-
-        <div class="contaBox">
-            <div class="divContaHeader">
-                <div>
-                    <!-- data de vencimento -->
-                    <span>setembro</span>
-                    <p>15</p>
-                </div>
-                <input type="checkbox">
-            </div>
-            <div class="contaInfos">
-                <h2>amendoim com nutella até que é bom</h2>
-            </div>
-            <div class="contaValores">
-                <p class="valorConta">R$ 55,00</p>
-            </div>
-        </div>
-
-        <div class="contaBox">
-            <div class="divContaHeader">
-                <div>
-                    <!-- data de vencimento -->
-                    <span>setembro</span>
-                    <p>15</p>
-                </div>
-                <input type="checkbox">
-            </div>
-            <div class="contaInfos">
-                <h2>amendoim com nutella até que é bom</h2>
-            </div>
-            <div class="contaValores">
-                <p class="valorConta">R$ 55,00</p>
-            </div>
-        </div>
-
-        <div class="contaBox">
-            <div class="divContaHeader">
-                <div>
-                    <!-- data de vencimento -->
-                    <span>setembro</span>
-                    <p>15</p>
-                </div>
-                <input type="checkbox">
-            </div>
-            <div class="contaInfos">
-                <h2>amendoim com nutella até que é bom</h2>
-            </div>
-            <div class="contaValores">
-                <p class="valorConta">R$ 55,00</p>
-            </div>
-        </div>
-
-        <div class="contaBox">
-            <div class="divContaHeader">
-                <div>
-                    <!-- data de vencimento -->
-                    <span>setembro</span>
-                    <p>15</p>
-                </div>
-                <input type="checkbox">
-            </div>
-            <div class="contaInfos">
-                <h2>amendoim com nutella até que é bom</h2>
-            </div>
-            <div class="contaValores">
-                <p class="valorConta">R$ 55,00</p>
-            </div>
-        </div>
-
-        <div class="contaBox">
-            <div class="divContaHeader">
-                <div>
-                    <!-- data de vencimento -->
-                    <span>setembro</span>
-                    <p>15</p>
-                </div>
-                <input type="checkbox">
-            </div>
-            <div class="contaInfos">
-                <h2>amendoim com nutella até que é bom</h2>
-            </div>
-            <div class="contaValores">
-                <p class="valorConta">R$ 55,00</p>
-            </div>
-        </div>
-
     </div>
+
+    <!-- DIV PARA CRIAR NOVO CARD -->
+    <div class="containerCriarCard">
+        <label for="newCard">um titulo qualquer</label>
+        <div class="divNewCard">
+            <input type="text" name="newCard" id="newCardTitle">
+            <button id="buttonCreateCard">+</button>
+        </div>
+    </div>
+
+
+
+
+    <!-- DIV DE CARDS -->
+    <div class="contasLista">
+        <div class="containerCards">
+            <div class="contaBox">
+                <div class="divContaHeader">
+                    <div>
+                        <!-- data de vencimento -->
+                        <span>setembro</span>
+                        <p>15</p>
+                    </div>
+                    <input type="checkbox">
+                </div>
+                <div class="contaInfos">
+                    <h2>amendoim com nutella até que é bom</h2>
+                </div>
+                <div class="contaValores">
+                    <p class="valorConta">R$ 55,00</p>
+                </div>
+            </div>
+
+            <div class="contaBox">
+                <div class="divContaHeader">
+                    <div>
+                        <!-- data de vencimento -->
+                        <span>setembro</span>
+                        <p>15</p>
+                    </div>
+                    <input type="checkbox">
+                </div>
+                <div class="contaInfos">
+                    <h2>amendoim com nutella até que é bom</h2>
+                </div>
+                <div class="contaValores">
+                    <p class="valorConta">R$ 55,00</p>
+                </div>
+            </div>
+
+            <div class="contaBox">
+                <div class="divContaHeader">
+                    <div>
+                        <!-- data de vencimento -->
+                        <span>setembro</span>
+                        <p>15</p>
+                    </div>
+                    <input type="checkbox">
+                </div>
+                <div class="contaInfos">
+                    <h2>amendoim com nutella até que é bom</h2>
+                </div>
+                <div class="contaValores">
+                    <p class="valorConta">R$ 55,00</p>
+                </div>
+            </div>
+
+            <div class="contaBox">
+                <div class="divContaHeader">
+                    <div>
+                        <!-- data de vencimento -->
+                        <span>setembro</span>
+                        <p>15</p>
+                    </div>
+                    <input type="checkbox">
+                </div>
+                <div class="contaInfos">
+                    <h2>amendoim com nutella até que é bom</h2>
+                </div>
+                <div class="contaValores">
+                    <p class="valorConta">R$ 55,00</p>
+                </div>
+            </div>
+
+            <div class="contaBox">
+                <div class="divContaHeader">
+                    <div>
+                        <!-- data de vencimento -->
+                        <span>setembro</span>
+                        <p>15</p>
+                    </div>
+                    <input type="checkbox">
+                </div>
+                <div class="contaInfos">
+                    <h2>amendoim com nutella até que é bom</h2>
+                </div>
+                <div class="contaValores">
+                    <p class="valorConta">R$ 55,00</p>
+                </div>
+            </div>
+
+            <div class="contaBox">
+                <div class="divContaHeader">
+                    <div>
+                        <!-- data de vencimento -->
+                        <span>setembro</span>
+                        <p>15</p>
+                    </div>
+                    <input type="checkbox">
+                </div>
+                <div class="contaInfos">
+                    <h2>amendoim com nutella até que é bom</h2>
+                </div>
+                <div class="contaValores">
+                    <p class="valorConta">R$ 55,00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let buttonCreateCard = document.getElementById('buttonCreateCard');
+        let closeModal = document.getElementById('closeModal');
+        let modalCriacao = document.getElementById('modalCriacao');
+        let titleCard = document.getElementById('titleCard');
+        let titleCardInput = document.getElementById('newCardTitle').value;
+        buttonCreateCard.addEventListener('click', () => {
+            modalCriacao.style.display = "flex";
+            titleCard.value = document.getElementById('newCardTitle').value;
+        })
+        closeModal.addEventListener('click', () => {
+            modalCriacao.style.display = "none";
+        })
+
+
+    </script>
 </body>
 
 </html>
