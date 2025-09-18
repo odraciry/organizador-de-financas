@@ -57,6 +57,20 @@ body {
     background-color: #d21232;
 }
 
+.cardInfos{
+    width: 100%;
+    background-color: #571f4e;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.cardComponents{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 /* FIM ESTILIZAÇÃO DO MODAL DE CRIAÇÃO DE CARDS */
 
 
@@ -148,6 +162,10 @@ body {
     height: 300px;
     transition: 1s all;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.277);
+
+}
+.contaBox:hover{
+    cursor: pointer;
 }
 
 .contaBox:nth-child(odd) {
@@ -215,7 +233,7 @@ input[type="checkbox"] {
 
 /* Estilo quando marcado */
 input[type="checkbox"]:checked {
-    background-color: #ffffffb5;
+    background-color: #ffffff;
     border-color: #ffffff;
 }
 

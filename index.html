@@ -22,13 +22,17 @@
                 </div>
                 <div class="cardComponents">
                     <label for="date">Data</label>
-                    <input type="date" name="date" id="date">
+                    <input type="date" name="date" id="dateCard">
                 </div>
                 <div class="cardComponents">
                     <label for="date">Valor</label>
-                    <input type="number" name="date" id="date">
+                    <input type="number" name="date" id="valueCard">
                 </div>
 
+            </div>
+            <div class="buttons">
+                <button class="btCriarCard" id="btCriarCard">Criar</button>
+                <button class="btCancelar" id="btCancelCard">Cancelar</button>
             </div>
         </div>
     </div>
@@ -47,7 +51,7 @@
 
     <!-- DIV DE CARDS -->
     <div class="contasLista">
-        <div class="containerCards">
+        <div class="containerCards" id="containerCards">
             <div class="contaBox">
                 <div class="divContaHeader">
                     <div>
@@ -55,7 +59,7 @@
                         <span>setembro</span>
                         <p>15</p>
                     </div>
-                    <input type="checkbox">
+                    <input type="checkbox" class="cardCheckbox">
                 </div>
                 <div class="contaInfos">
                     <h2>amendoim com nutella até que é bom</h2>
@@ -65,90 +69,6 @@
                 </div>
             </div>
 
-            <div class="contaBox">
-                <div class="divContaHeader">
-                    <div>
-                        <!-- data de vencimento -->
-                        <span>setembro</span>
-                        <p>15</p>
-                    </div>
-                    <input type="checkbox">
-                </div>
-                <div class="contaInfos">
-                    <h2>amendoim com nutella até que é bom</h2>
-                </div>
-                <div class="contaValores">
-                    <p class="valorConta">R$ 55,00</p>
-                </div>
-            </div>
-
-            <div class="contaBox">
-                <div class="divContaHeader">
-                    <div>
-                        <!-- data de vencimento -->
-                        <span>setembro</span>
-                        <p>15</p>
-                    </div>
-                    <input type="checkbox">
-                </div>
-                <div class="contaInfos">
-                    <h2>amendoim com nutella até que é bom</h2>
-                </div>
-                <div class="contaValores">
-                    <p class="valorConta">R$ 55,00</p>
-                </div>
-            </div>
-
-            <div class="contaBox">
-                <div class="divContaHeader">
-                    <div>
-                        <!-- data de vencimento -->
-                        <span>setembro</span>
-                        <p>15</p>
-                    </div>
-                    <input type="checkbox">
-                </div>
-                <div class="contaInfos">
-                    <h2>amendoim com nutella até que é bom</h2>
-                </div>
-                <div class="contaValores">
-                    <p class="valorConta">R$ 55,00</p>
-                </div>
-            </div>
-
-            <div class="contaBox">
-                <div class="divContaHeader">
-                    <div>
-                        <!-- data de vencimento -->
-                        <span>setembro</span>
-                        <p>15</p>
-                    </div>
-                    <input type="checkbox">
-                </div>
-                <div class="contaInfos">
-                    <h2>amendoim com nutella até que é bom</h2>
-                </div>
-                <div class="contaValores">
-                    <p class="valorConta">R$ 55,00</p>
-                </div>
-            </div>
-
-            <div class="contaBox">
-                <div class="divContaHeader">
-                    <div>
-                        <!-- data de vencimento -->
-                        <span>setembro</span>
-                        <p>15</p>
-                    </div>
-                    <input type="checkbox">
-                </div>
-                <div class="contaInfos">
-                    <h2>amendoim com nutella até que é bom</h2>
-                </div>
-                <div class="contaValores">
-                    <p class="valorConta">R$ 55,00</p>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -156,17 +76,69 @@
         let buttonCreateCard = document.getElementById('buttonCreateCard');
         let closeModal = document.getElementById('closeModal');
         let modalCriacao = document.getElementById('modalCriacao');
-        let titleCard = document.getElementById('titleCard');
         let titleCardInput = document.getElementById('newCardTitle').value;
+        let btCriarCard = document.getElementById('btCriarCard');
+        let btCancelCard = document.getElementById('btCancelCard');
+        let cardObjects = [];
+        let containerCards = document.getElementById('containerCards');
+        let html = ""
+
+
         buttonCreateCard.addEventListener('click', () => {
             modalCriacao.style.display = "flex";
             titleCard.value = document.getElementById('newCardTitle').value;
-        })
+        });
         closeModal.addEventListener('click', () => {
             modalCriacao.style.display = "none";
+        });
+        btCancelCard.addEventListener('click', () => {
+            modalCriacao.style.display = "none";
+        });
+        btCriarCard.addEventListener('click', () => {
+            const dataObj = new Date(document.getElementById('dateCard').value);
+            const dia = dataObj.getDate();
+            const mes = dataObj.toLocaleString("pt-BR", { month: "long" });
+            cardObjects.push({
+                title: document.getElementById('titleCard').value,
+                day: dia,
+                month: mes,
+                value: document.getElementById('valueCard').value
+            })
+            console.log(cardObjects);
+            cardObjects.forEach(card => {
+                html = `<div class="contaBox">\
+                <div class="divContaHeader">\
+                    <div>\
+                        <span>${card.month}</span>\
+                        <p>${card.day}</p>\
+                    </div>\
+                    <input type="checkbox" class="cardCheckbox">\
+                </div>\
+                <div class="contaInfos">\
+                    <h2>${card.title}</h2>\
+                </div>\
+                <div class="contaValores">\
+                    <p class="valorConta">R$ ${card.value.replace(".", ",")}</p>\
+                </div>\
+            </div>`
+            });
+            containerCards.innerHTML += html;
+        });
+
+        containerCards.addEventListener("click", (e) => {
+            const card = e.target.closest('.contaBox');
+            // se clicou diretamente no checkbox, não faz nada
+            if (e.target.tagName === "INPUT" && e.target.type === "checkbox") return;
+
+            const checkbox = card.querySelector(".cardCheckbox");
+            if(checkbox.checked){
+                checkbox.checked = false;
+            } else {
+                checkbox.checked = true;
+            }
+            console.log(checkbox);
+            console.log("card clicado", card.innerHTML);
         })
-
-
     </script>
 </body>
 
