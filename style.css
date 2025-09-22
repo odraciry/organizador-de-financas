@@ -12,7 +12,7 @@ body {
 
 /* COMEÇO ESTILIZAÇÃO DO MODAL DE CRIAÇÃO DE CARDS */
 .modalCriacao {
-    display: none;
+    display: flex;
     position: absolute;
     align-items: center;
     z-index: 999;
@@ -26,7 +26,7 @@ body {
 .boxCriacao {
     margin: 0 auto;
     width: 40%;
-    height: 500px;
+    height: 520px;
     background-color: white;
     border-radius: 4px;
 }
@@ -34,6 +34,8 @@ body {
 .boxCriacao h2 {
     font-size: 1.5rem;
     text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
 }
 
 .divCloseModal {
@@ -49,6 +51,8 @@ body {
     border-radius: 0px 3px 0px 4px;
     margin: 1px;
     transition: all .1s;
+    color: white;
+    font-weight: 700;
 }
 
 #closeModal:hover {
@@ -59,16 +63,45 @@ body {
 
 .cardInfos{
     width: 100%;
-    background-color: #571f4e;
+    padding: 0 20%;
+    /* background-color: #571f4e; */
     display: flex;
     flex-direction: column;
     margin: 0 auto;
 }
 .cardComponents{
-    height: 50px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+.cardComponents label{
+    font-size: 1.2rem;
+    margin-top: .5rem;
+    text-transform: uppercase;
+}
+.cardComponents input{
+    all: unset;
+    height: 2.5rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: .5rem 0;
+}
+
+.buttons{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.buttons button{
+    width: 150px;
+    height: 3rem;
+    margin: 0 1rem;
+    
+}
+.buttons button:hover{
+    cursor: pointer;
 }
 
 /* FIM ESTILIZAÇÃO DO MODAL DE CRIAÇÃO DE CARDS */
@@ -150,7 +183,7 @@ body {
     padding: 2rem 0px;
     /* border-radius: 12px; */
     /* background-color: #4d194d; */
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.070);
+    box-shadow: 1px 132px 222px rgba(0, 0, 0, 0.070);
 }
 
 .contaBox {
