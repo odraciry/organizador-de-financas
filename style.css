@@ -63,7 +63,7 @@ body {
 
 .cardInfos{
     width: 100%;
-    padding: 0 20%;
+    padding: 0 7%;
     /* background-color: #571f4e; */
     display: flex;
     flex-direction: column;
@@ -76,32 +76,64 @@ body {
     justify-content: flex-start;
 }
 .cardComponents label{
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-top: .5rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 .cardComponents input{
     all: unset;
-    height: 2.5rem;
+    height: 3rem;
     border: 1px solid black;
     border-radius: 4px;
     margin: .5rem 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+.valorVencimento{
+    display: flex;
+    flex-direction: row;
+    margin-top: .5rem;
+}
+.valorVencimento div{
+    width: 50%;
+}
+.valorVencimento div input{
+    width: 100%;
+}
+.valorVencimento div:first-child{
+    margin-right: .5rem;
 }
 
 .buttons{
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 4rem;
+
 }
 .buttons button{
-    width: 150px;
+    width: 180px;
     height: 3rem;
-    margin: 0 1rem;
-    
+    margin: 0 .4rem;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: 500;
+
 }
 .buttons button:hover{
     cursor: pointer;
+}
+
+.btCriarCard{
+    background: #571f4ec0;
+    color: white;
+    border: none;
+
+}
+.btCancelar{
+    background: none;
+    border: 1px solid black;
+    color: #3f3f3f;
 }
 
 /* FIM ESTILIZAÇÃO DO MODAL DE CRIAÇÃO DE CARDS */
@@ -140,12 +172,33 @@ body {
     width: 80%;
     padding: 1rem;
 }
+.containerDate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* remove o ícone do calendário no Chrome */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+#dateCard{
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    justify-content: center;
+}
+#dateCard:hover{
+    cursor: pointer;
+}
 
 .divNewCard button {
     all: unset;
     width: 20%;
     font-size: 2rem;
     background-color: #a5609a;
+    color: white;
     text-align: center;
     display: flex;
     justify-content: center;

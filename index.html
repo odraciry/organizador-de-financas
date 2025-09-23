@@ -18,17 +18,18 @@
                 <h2>Crie seu novo card</h2>
                 <div class="cardComponents">
                     <label for="date">Título</label>
-                    <input type="text" name="title" id="titleCard">
+                    <input type="text" name="title" id="titleCard" placeholder="Fatura do cartão de crédito">
                 </div>
-                <div class="cardComponents">
-                    <label for="date">Data</label>
-                    <input type="date" name="date" id="dateCard">
+                <div class="valorVencimento">
+                    <div class="cardComponents">
+                        <label for="date">Valor</label>
+                        <input type="number" name="date" id="valueCard" placeholder="99,99">
+                    </div>
+                    <div class="cardComponents containerDate">
+                        <label for="date">Vencimento</label>
+                        <input type="date" name="date" id="dateCard">
+                    </div>
                 </div>
-                <div class="cardComponents">
-                    <label for="date">Valor</label>
-                    <input type="number" name="date" id="valueCard">
-                </div>
-
             </div>
             <div class="buttons">
                 <button class="btCriarCard" id="btCriarCard">Criar</button>
@@ -98,14 +99,31 @@
             const dataObj = new Date(document.getElementById('dateCard').value);
             const dia = dataObj.getDate();
             const mes = dataObj.toLocaleString("pt-BR", { month: "long" });
-            cardObjects.push({
+            if (isNaN(dataObj.getTime())) return alert(`Data inválida: ${dataObj}`)
+            if (mes != '' && mes != 'Invalid Date' && dia > 0 && document.getElementById('titleCard').value != '' && document.getElementById('valueCard').value != '') {
+                alert('ta tudo preenchido')
+                cardObjects.push({
                 title: document.getElementById('titleCard').value,
                 day: dia,
                 month: mes,
                 value: document.getElementById('valueCard').value
             })
+            } else {
+                return alert(`
+                VALORES INVALIDOS, VALIDE:
+                {
+                    Título: ${document.getElementById('titleCard').value},
+                    Mês: ${mes},
+                    Dia: ${dia},
+                    Valor: ${document.getElementById('valueCard').value}
+                }
+                `)
+            }
+            
             console.log(cardObjects);
             cardObjects.forEach(card => {
+
+
                 html = `<div class="contaBox">\
                 <div class="divContaHeader">\
                     <div>\
@@ -131,7 +149,7 @@
             if (e.target.tagName === "INPUT" && e.target.type === "checkbox") return;
 
             const checkbox = card.querySelector(".cardCheckbox");
-            if(checkbox.checked){
+            if (checkbox.checked) {
                 checkbox.checked = false;
             } else {
                 checkbox.checked = true;
