@@ -5,14 +5,19 @@
 }
 
 body {
-    background-color: #f8f9fa;
+    background-image: url(img/pasagem.jpg);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
     font-family: 'Inter', sans-serif;
 }
 
 
 /* COMEÇO ESTILIZAÇÃO DO MODAL DE CRIAÇÃO DE CARDS */
 .modalCriacao {
-    display: flex;
+    display: none;
     position: absolute;
     align-items: center;
     z-index: 999;
@@ -61,7 +66,7 @@ body {
     background-color: #d21232;
 }
 
-.cardInfos{
+.cardInfos {
     width: 100%;
     padding: 0 7%;
     /* background-color: #571f4e; */
@@ -69,18 +74,21 @@ body {
     flex-direction: column;
     margin: 0 auto;
 }
-.cardComponents{
+
+.cardComponents {
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
-.cardComponents label{
+
+.cardComponents label {
     font-size: 1rem;
     margin-top: .5rem;
     text-transform: capitalize;
 }
-.cardComponents input{
+
+.cardComponents input {
     all: unset;
     height: 3rem;
     border: 1px solid black;
@@ -89,48 +97,58 @@ body {
     padding: 0 1rem;
     box-sizing: border-box;
 }
-.valorVencimento{
+
+.valorVencimento {
     display: flex;
     flex-direction: row;
     margin-top: .5rem;
 }
-.valorVencimento div{
+
+.valorVencimento div {
     width: 50%;
 }
-.valorVencimento div input{
+
+.valorVencimento div input {
     width: 100%;
 }
-.valorVencimento div:first-child{
+
+.valorVencimento div:first-child {
     margin-right: .5rem;
 }
 
-.buttons{
+.buttons {
     margin: 0 auto;
     display: flex;
     justify-content: center;
     margin-top: 4rem;
 
 }
-.buttons button{
+
+.buttons button {
     width: 180px;
     height: 3rem;
     margin: 0 .4rem;
     border-radius: 4px;
     font-size: 1.2rem;
     font-weight: 500;
-
+    box-shadow: 3px 5px 10px #cecece;
+    transition: all .1s;
 }
-.buttons button:hover{
+
+.buttons button:hover {
+    transition: all .1s;
     cursor: pointer;
+    box-shadow: 4px 2px 16px #cecece;
 }
 
-.btCriarCard{
+.btCriarCard {
     background: #571f4ec0;
     color: white;
     border: none;
 
 }
-.btCancelar{
+
+.btCancelar {
     background: none;
     border: 1px solid black;
     color: #3f3f3f;
@@ -153,7 +171,7 @@ body {
     margin-bottom: 1rem;
     font-size: 2rem;
     text-transform: capitalize;
-    color: #000000;
+    color: #ffffff;
     font-weight: 700;
 }
 
@@ -172,24 +190,28 @@ body {
     width: 80%;
     padding: 1rem;
 }
-.containerDate{
+
+.containerDate {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 /* remove o ícone do calendário no Chrome */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
+    display: none;
+    -webkit-appearance: none;
 }
-#dateCard{
+
+#dateCard {
     display: flex;
     align-items: center;
     text-transform: uppercase;
     justify-content: center;
 }
-#dateCard:hover{
+
+#dateCard:hover {
     cursor: pointer;
 }
 
@@ -197,7 +219,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     all: unset;
     width: 20%;
     font-size: 2rem;
-    background-color: #a5609a;
+    background-color: #925588;
     color: white;
     text-align: center;
     display: flex;
@@ -210,7 +232,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .divNewCard button:hover {
     cursor: pointer;
     transition: all .2s;
-    background-color: #925588;
+    background-color: #925588d3;
 }
 
 .divNewCard button:active {
@@ -226,6 +248,34 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-sizing: border-box;
 }
 
+.contaType {
+    padding: 0 .5rem;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.contaType h3 {
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 1px black;
+    background-color: rgba(255, 255, 255, 0.214);
+    border-radius: 10px 10px 2px 2px;
+    text-align: center;
+    padding: .2rem 1rem;
+    margin: 0 .5px;
+    font-size: 1rem;
+    border: 1px solid rgba(218, 218, 218, 0.799);
+    transition: all .1;
+}
+.contaType h3:hover{
+    transition: all .1;
+    background-color: rgba(255, 255, 255, 0.818);
+    text-shadow: 1px 1px 1px rgb(250, 250, 250);
+    color: #1c0a19;
+    cursor: pointer;
+}
+
 .containerCards {
     width: 50%;
     margin: 0 auto;
@@ -234,9 +284,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     justify-content: center;
     flex-wrap: wrap;
     padding: 2rem 0px;
-    /* border-radius: 12px; */
-    /* background-color: #4d194d; */
-    box-shadow: 1px 132px 222px rgba(0, 0, 0, 0.070);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255 255 255 / 22%));
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0.3px);
+    -webkit-backdrop-filter: blur(0.3px);
+    border: 2px solid;
+    border-image: linear-gradient(356deg, rgba(218, 218, 218, 0.799), rgba(255, 255, 255, 0)) 1;
+    border-radius: 6px;
 }
 
 .contaBox {
@@ -250,7 +304,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.277);
 
 }
-.contaBox:hover{
+
+.contaBox:hover {
     cursor: pointer;
 }
 
