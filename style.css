@@ -252,8 +252,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     padding: 0 .5rem;
     width: 50%;
     margin: 0 auto;
+    transform: translateY(2px);
     display: flex;
     flex-direction: row;
+    display: none;
 }
 
 .contaType h3 {
@@ -331,6 +333,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .contaInfos,
 .contaValores {
     height: 33%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.iconLixeira{
+    width: 30px;
+    filter: invert(1);
+    display: none;
 }
 
 .contaInfos,
@@ -397,5 +408,22 @@ input[type="checkbox"]:checked::after {
     font-size: .8rem;
 
 }
-
 /* ESTILIZAÇÃO DOS CARDS FIM */
+
+
+@media screen and (max-width: 768px) {
+    .boxCriacao{
+        width: 98%;
+    }
+    .divNewCard{
+        width: 90%;
+    }
+    .containerCards{
+        width: 100%;
+
+    }
+    .contaBox{
+        width: 190px;
+        height: 260px;
+    }
+}
