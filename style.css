@@ -408,6 +408,10 @@ input[type="checkbox"]:checked::after {
     font-size: .8rem;
 
 }
+
+.idCard{
+    visibility: hidden;
+}
 /* ESTILIZAÇÃO DOS CARDS FIM */
 
 
@@ -423,7 +427,7 @@ input[type="checkbox"]:checked::after {
 
     }
     .contaBox{
-        width: 190px;
+        width: 247px;
         height: 260px;
     }
 }
