@@ -64,7 +64,7 @@ containerCards.addEventListener("click", (e) => {
     // se clicou diretamente no checkbox, não faz nada
     if (e.target.tagName === "INPUT" && e.target.type === "checkbox") return;
     if (e.target.tagName === "IMG") {
-        alert('ola mundo')
+        // alert('ola mundo')
         cardObjects = cardObjects.filter(card => card.id.toString() !== cardTargetId.toString());
         console.log(cardObjects)
         salvarCards();
