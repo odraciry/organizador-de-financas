@@ -128,21 +128,22 @@ function generateId() {
 }
 
 function salvarCards() {
-  localStorage.setItem("cards", JSON.stringify(cardObjects));
+    localStorage.setItem("cards", JSON.stringify(cardObjects));
 }
 
 function carregarCards() {
-  cardObjects = JSON.parse(localStorage.getItem("cards")) || [];
-  pushCards(); // redesenha os cards no HTML
+    cardObjects = JSON.parse(localStorage.getItem("cards")) || [];
+    pushCards(); // redesenha os cards no HTML
 }
 
 
 // carregar os cards quando a página abre
 window.addEventListener("DOMContentLoaded", () => {
-  carregarCards();
+    localStorage
+    carregarCards();
 });
 
 // salvar os cards sempre que recarregar/fechar
 window.addEventListener("beforeunload", () => {
-  salvarCards();
+    salvarCards();
 });
