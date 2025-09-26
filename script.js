@@ -58,7 +58,7 @@ btCriarCard.addEventListener('click', () => {
 
 containerCards.addEventListener("click", (e) => {
     const card = e.target.closest('.contaBox');
-    let cardTargetId = card.querySelector(".idCard").innerText;
+    let cardTargetId = card.dataset.id;
     const checkbox = card.querySelector(".cardCheckbox");
     const iconLixeira = card.querySelector(".iconLixeira");
     // se clicou diretamente no checkbox, não faz nada
@@ -95,8 +95,7 @@ function pushCards() {
     // containerCards.innerHTML = "";
     html = "";
     cardObjects.forEach(card => {
-        html += `<div class="contaBox">\
-                <span class="idCard">${card.id}</span>
+        html += `<div class="contaBox" data-id="${card.id}">\
                 <div class="divContaHeader">\
                     <div>\
                         <span>${card.month}</span>\
