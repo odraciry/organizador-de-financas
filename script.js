@@ -7,20 +7,23 @@ let btCriarCard = document.getElementById('btCriarCard');
 let btCancelCard = document.getElementById('btCancelCard');
 let cardObjects = [];
 let containerCards = document.getElementById('containerCards');
-// let iconLixeira = document.getElementById('iconLixeira');
+let message = document.getElementById('message');
 let html = "";
 
 
 buttonCreateCard.addEventListener('click', () => {
+    document.querySelector('body').classList.add("no-scroll")
     modalCriacao.style.display = "flex";
     titleCard.value = document.getElementById('newCardTitle').value;
     console.log(document.getElementById('newCardTitle').value)
 });
 closeModal.addEventListener('click', () => {
+    document.querySelector('body').classList.remove("no-scroll")
     modalCriacao.style.display = "none";
     resetInputs();
 });
 btCancelCard.addEventListener('click', () => {
+    document.querySelector('body').classList.remove("no-scroll")
     modalCriacao.style.display = "none";
     resetInputs();
 });
@@ -28,7 +31,10 @@ btCriarCard.addEventListener('click', () => {
     const dataObj = new Date(document.getElementById('dateCard').value);
     const dia = dataObj.getDate();
     const mes = dataObj.toLocaleString("pt-BR", { month: "long" });
-    if (isNaN(dataObj.getTime())) return alert(`Data inválida: ${dataObj}`)
+    if (isNaN(dataObj.getTime())){
+        message.innerText = `Data invalida`
+        return notification();
+    }
     if (mes != '' && mes != 'Invalid Date' && dia > 0 && document.getElementById('titleCard').value != '' && document.getElementById('valueCard').value != '') {
         modalCriacao.style.display = "none";
         cardObjects.push({
@@ -39,21 +45,18 @@ btCriarCard.addEventListener('click', () => {
             value: document.getElementById('valueCard').value
         })
     } else {
-        return alert(`
-                VALORES INVALIDOS, VALIDE:
-                {
-                    Título: ${document.getElementById('titleCard').value},
-                    Mês: ${mes},
-                    Dia: ${dia},
-                    Valor: ${document.getElementById('valueCard').value}
-                }
-                `)
+        message.innerText = "falha campos invalidos"
+        return notification();
+    
     }
-
+    document.querySelector('body').classList.remove("no-scroll")
     console.log(cardObjects);
-    salvarCards()
+    message.innerText = "card criado com sucesso"
+    notification();
+    salvarCards();
     carregarCards();
     resetInputs();
+
 });
 
 containerCards.addEventListener("click", (e) => {
@@ -136,6 +139,24 @@ function carregarCards() {
     pushCards(); // redesenha os cards no HTML
 }
 
+function notification() {
+    const messageNotification = document.getElementById("messageNotification");
+    // mostra
+    messageNotification.classList.remove("notificationOff");
+    messageNotification.classList.add("notificationOn");
+
+    // depois de 3s, começa a sumir
+    setTimeout(() => {
+        messageNotification.classList.add("notificationSumir");
+    }, 3000);
+    
+    // depois de 4s, esconde de vez
+    setTimeout(() => {
+        messageNotification.classList.remove("notificationSumir");
+        messageNotification.classList.remove("notificationOn");
+        messageNotification.classList.add("notificationOff");
+    }, 5000);
+}
 
 // carregar os cards quando a página abre
 window.addEventListener("DOMContentLoaded", () => {
