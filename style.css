@@ -8,6 +8,7 @@
     }
 
 }
+
 @keyframes sumir {
     from {
         opacity: 1;
@@ -196,7 +197,7 @@ body {
     justify-content: center;
     align-items: center;
     border-top: 3px solid rgb(7, 229, 7);
-    
+
     box-shadow: 1px 1px 10px black;
     text-transform: uppercase;
     font-weight: 600;
@@ -494,5 +495,46 @@ input[type="checkbox"]:checked::after {
     .contaBox {
         width: 247px;
         height: 260px;
+    }
+
+    /* INICIO STYLE CARDS MOBILE */
+    .contaBoxMobile {
+        width: 80px;
+        height: 80px;
+        padding: .5rem;
+        justify-content: center;
+        transition: all 1s;
+
+    }
+    /* .contaBoxMobile:hover{
+        width: 247px;
+        height: 260px;
+        transition: all 1s;
+    } */
+
+    .contaBoxMobile>.divContaHeader, .contaBoxMobile> .contaValores {
+        display: none;
+    }
+
+    .contaBoxMobile>.contaInfos {
+        justify-content: center;
+    }
+
+    .contaBoxMobile>.contaInfos h2 {
+        font-size: .8rem;
+        white-space: nowrap;
+        /* não quebra linha */
+        overflow: hidden;
+        /* esconde o que passar do limite */
+        text-overflow: ellipsis;
+        /* adiciona "..." */
+        width: 200px;
+        /* define largura do container */
+        display: block;
+        /* garante que funcione em div/p/span */
+    }
+
+    .contaBoxMobile>.contaInfos h2::after {
+        content: attr(data-first) "...";
     }
 }

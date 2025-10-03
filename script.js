@@ -8,8 +8,12 @@ let btCancelCard = document.getElementById('btCancelCard');
 let cardObjects = [];
 let containerCards = document.getElementById('containerCards');
 let message = document.getElementById('message');
+let messageStatus = ""
 let html = "";
-
+let isMobile = false;
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+window.addEventListener("DOMContentLoaded", () => isMobileFunction())
+mediaQuery.addEventListener("change", () => isMobileFunction());
 
 buttonCreateCard.addEventListener('click', () => {
     document.querySelector('body').classList.add("no-scroll")
@@ -31,7 +35,8 @@ btCriarCard.addEventListener('click', () => {
     const dataObj = new Date(document.getElementById('dateCard').value);
     const dia = dataObj.getDate();
     const mes = dataObj.toLocaleString("pt-BR", { month: "long" });
-    if (isNaN(dataObj.getTime())){
+    if (isNaN(dataObj.getTime())) {
+        messageStatus = "red"
         message.innerText = `Data invalida`
         return notification();
     }
@@ -45,13 +50,16 @@ btCriarCard.addEventListener('click', () => {
             value: document.getElementById('valueCard').value
         })
     } else {
+        messageStatus = "red"
         message.innerText = "falha campos invalidos"
         return notification();
-    
+
     }
     document.querySelector('body').classList.remove("no-scroll")
     console.log(cardObjects);
     message.innerText = "card criado com sucesso"
+    messageStatus = "green"
+
     notification();
     salvarCards();
     carregarCards();
@@ -61,11 +69,23 @@ btCriarCard.addEventListener('click', () => {
 
 containerCards.addEventListener("click", (e) => {
     const card = e.target.closest('.contaBox');
+    cardSize(card)
     let cardTargetId = card.dataset.id;
     const checkbox = card.querySelector(".cardCheckbox");
     const iconLixeira = card.querySelector(".iconLixeira");
     // se clicou diretamente no checkbox, não faz nada
-    if (e.target.tagName === "INPUT" && e.target.type === "checkbox") return;
+    if (e.target.tagName === "INPUT" && e.target.type === "checkbox"){
+        if (!checkbox.checked) {
+                console.log("if2")
+
+                iconLixeira.style.display = "none";
+            } else {
+                console.log("else2")
+
+                iconLixeira.style.display = "block";
+            }
+            return
+    };
     if (e.target.tagName === "IMG") {
         // alert('ola mundo')
         cardObjects = cardObjects.filter(card => card.id.toString() !== cardTargetId.toString());
@@ -75,30 +95,64 @@ containerCards.addEventListener("click", (e) => {
     };
 
 
-    if (checkbox.checked) {
-        checkbox.checked = false;
-        iconLixeira.style.display = "none";
-    } else {
-        checkbox.checked = true;
-        iconLixeira.style.display = "block";
-    }
-    checkbox.addEventListener("input", () => {
+    if (!isMobile) {
         if (checkbox.checked) {
+            console.log("if1")
             checkbox.checked = false;
             iconLixeira.style.display = "none";
         } else {
+            console.log("else1")
+
             checkbox.checked = true;
             iconLixeira.style.display = "block";
         }
-    })
+        checkbox.addEventListener("input", () => {
+            if (checkbox.checked) {
+                console.log("if2")
+
+                checkbox.checked = false;
+                iconLixeira.style.display = "none";
+            } else {
+                console.log("else2")
+
+                checkbox.checked = true;
+                iconLixeira.style.display = "block";
+            }
+        })
+    }
+
+
 
 })
+
+function cardSize(card) {
+    console.log(isMobile)
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        console.log(card)
+        card.addEventListener("touchstart", () => {
+            console.log("ta DENTRO do LISTENER")
+            card.classList.remove("contaBoxMobile")
+        })
+        card.addEventListener("mouseleave", () => {
+            console.log("ta FORA do LISTENER")
+            card.classList.add("contaBoxMobile")
+        })
+    }
+}
+
+function isMobileFunction() {
+    if (window.innerWidth < 768) {
+        return isMobile = true;
+    } else {
+        return isMobile = false;
+    }
+}
 
 function pushCards() {
     // containerCards.innerHTML = "";
     html = "";
     cardObjects.forEach(card => {
-        html += `<div class="contaBox" data-id="${card.id}">\
+        html += `<div class="contaBox contaBoxMobile" data-id="${card.id}">\
                 <div class="divContaHeader">\
                     <div>\
                         <span>${card.month}</span>\
@@ -141,6 +195,12 @@ function carregarCards() {
 
 function notification() {
     const messageNotification = document.getElementById("messageNotification");
+    if (messageStatus == "green") {
+        messageNotification.style.borderTopColor = "rgb(7, 229, 7)"
+
+    } else {
+        messageNotification.style.borderTopColor = "red"
+    }
     // mostra
     messageNotification.classList.remove("notificationOff");
     messageNotification.classList.add("notificationOn");
@@ -149,7 +209,7 @@ function notification() {
     setTimeout(() => {
         messageNotification.classList.add("notificationSumir");
     }, 3000);
-    
+
     // depois de 4s, esconde de vez
     setTimeout(() => {
         messageNotification.classList.remove("notificationSumir");
